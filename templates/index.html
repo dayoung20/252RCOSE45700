@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>KU 실전SW RAG 챗봇</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="header">
+        <h1>LangChain RAG 챗봇</h1>
+        <p>고려대 실전SW 과제 전용 지식 베이스를 질의하세요.</p>
+      </section>
+
+      <section class="chat-box" id="chat-box"></section>
+
+      <form id="chat-form">
+        <input
+          type="text"
+          id="question"
+          placeholder="질문을 입력하세요..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit">질문하기</button>
+      </form>
+    </main>
+
+    <script>
+      const chatForm = document.getElementById("chat-form");
+      const chatBox = document.getElementById("chat-box");
+
+      const appendMessage = (role, text, sources = []) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = `message ${role}`;
+
+        const content = document.createElement("p");
+        content.textContent = text;
+        wrapper.appendChild(content);
+
+        if (sources.length > 0) {
+          const sourceList = document.createElement("ul");
+          sourceList.className = "sources";
+          sources.forEach((src) => {
+            const item = document.createElement("li");
+            item.textContent = `${src.title} (${src.path})`;
+            sourceList.appendChild(item);
+          });
+          wrapper.appendChild(sourceList);
+        }
+
+        chatBox.appendChild(wrapper);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      };
+
+      chatForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const question = document.getElementById("question").value.trim();
+        if (!question) return;
+
+        appendMessage("user", question);
+        document.getElementById("question").value = "";
+        appendMessage("bot", "답변 생성 중...");
+
+        try {
+          const response = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ question }),
+          });
+          const data = await response.json();
+          chatBox.lastChild.remove(); // remove loading message
+
+          if (data.error) {
+            appendMessage("bot", `⚠️ ${data.error}`);
+          } else {
+            appendMessage("bot", data.answer, data.sources);
+          }
+        } catch (error) {
+          chatBox.lastChild.remove();
+          appendMessage("bot", `⚠️ 서버 오류: ${error.message}`);
+        }
+      });
+    </script>
+  </body>
+</html>
+
