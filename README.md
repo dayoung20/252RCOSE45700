@@ -58,20 +58,5 @@ Flask 기반의 경량 웹 UI 위에서 LangChain을 활용한 RAG(Retrieval-Aug
 - 사용자가 질문하면 FAISS에서 top-k 문서를 찾아 `ChatPromptTemplate`에 삽입하고, `ChatOpenAI`가 답변을 생성합니다.
 - 응답 단계에서 실제로 사용된 문서의 경로/이름을 후처리하여 `출처` 섹션으로 노출합니다.
 
-## 과제 요구사항 만족 여부
 
-- [x] LangChain 기반 RAG 파이프라인
-- [x] 임베딩 & 벡터스토어 직접 구성 (HuggingFace Embedding + FAISS)
-- [x] 데이터 소스 2개 이상 (`data/` 내 2개 문서)
-- [x] 베드락/스트림릿 미사용, Flask UI 제공
-- [x] 답변에 출처 표기
-
-## 추가 개선 아이디어
-
-- FastAPI + WebSocket으로 스트리밍 응답 지원
-- 지식원을 S3, Google Drive 등 외부 스토리지로 확장
-- LangSmith/Weights & Biases를 사용한 프롬프트 및 체인 모니터링
-- 사용자 피드백(thumbs up/down)을 저장하여 재학습/재정렬
-
-행운을 빕니다! 🎓💻
 
