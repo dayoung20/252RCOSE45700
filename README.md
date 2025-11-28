@@ -11,8 +11,6 @@ Flask 기반의 경량 웹 UI 위에서 LangChain을 활용한 RAG(Retrieval-Aug
 │   ├── rag_pipeline.py   # LangChain RAG 체인 및 citation 로직
 │   └── server.py         # Flask 앱, REST 엔드포인트 및 UI 렌더링
 ├── data
-│   ├── ku_ai_track.md
-│   ├── ku_student_success.md
 │   └── feeds/            # RSS에서 동적으로 적재되는 문서
 ├── feeds.yaml            # 수집할 RSS 피드 정의
 ├── static
