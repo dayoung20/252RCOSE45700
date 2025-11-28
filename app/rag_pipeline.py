@@ -80,16 +80,16 @@ class RagChatbot:
 
     def _build_prompt(self) -> ChatPromptTemplate:
         system_message = (
-            "너는 고려대학교 실전SW 과제를 돕는 RAG 챗봇이다. "
-            "제공된 콘텍스트 안에서만 답변하고, 모르는 내용은 솔직하게 모른다고 말해라. "
-            "답변 마지막에는 [source_id] 형태로 최소 1개 이상의 출처를 표기하라."
+            "You are a RAG chatbot that assists the Korea University Practical SW course. "
+            "Answer strictly within the provided context; if the answer is unknown, state that honestly. "
+            "Always end your response with at least one citation in the form [source_id]."
         )
         template = (
-            "질문: {question}\n"
+            "Question: {question}\n"
             "-----------------\n"
-            "콘텍스트:\n{context}\n"
+            "Context:\n{context}\n"
             "-----------------\n"
-            "위 자료만 활용해 concise 하게 대답해라."
+            "Respond concisely using only the context above."
         )
         return ChatPromptTemplate.from_messages(
             [
@@ -119,7 +119,7 @@ class RagChatbot:
 
     def answer(self, question: str) -> Dict[str, object]:
         if not question.strip():
-            raise ValueError("질문이 비어 있습니다.")
+            raise ValueError("empty question")
 
         docs = self.vectorstore.similarity_search(question, k=self.settings.top_k)
         context = self._format_context(docs)

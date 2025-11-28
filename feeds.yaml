@@ -1,0 +1,8 @@
+feeds:
+  - name: "Korea University (Google News)"
+    url: "https://news.google.com/rss/search?q=%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90&hl=ko&gl=KR&ceid=KR:ko"
+    limit: 5
+  - name: "Korean Ministry of Education (Google News)"
+    url: "https://news.google.com/rss/search?q=%EA%B5%90%EC%9C%A1%EB%B6%80&hl=ko&gl=KR&ceid=KR:ko"
+    limit: 5
+
