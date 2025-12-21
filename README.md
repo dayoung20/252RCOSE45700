@@ -52,11 +52,11 @@ Flask 기반의 경량 웹 UI 위에서 LangChain을 활용한 RAG(Retrieval-Aug
 
 4. **웹 UI**
    - 브라우저에서 `http://127.0.0.1:5000` 접속
-   - 질문 입력 후 전송하면 답변과 함께 참조 문서 리스트가 표시
+   - 질문 입력 후 전송하면 답변과 함께 참조 문서 리스트 표시
 
 ## RSS 피드 연동으로 데이터 확장하기
 
-`feeds.yaml`에 원하는 RSS 주소를 등록하고 `scripts/fetch_feeds.py`를 실행하면 최신 기사들이 `data/feeds/` 폴더에 마크다운으로 누적됩니다. `DirectoryLoader`는 `data/` 아래 모든 `.md` 파일을 자동으로 읽으므로, 외부 뉴스/보도자료도 같은 RAG 파이프라인으로 검색됩니다.
+`feeds.yaml`에 원하는 RSS 주소를 등록하고 `scripts/fetch_feeds.py`를 실행하면 최신 기사들이 `data/feeds/` 폴더에 마크다운으로 누적됩니다. `DirectoryLoader`는 `data/` 아래 모든 `.md` 파일을 자동으로 읽으므로, 외부 뉴스/보도자료도 같은 RAG 파이프라인으로 검색
 
 1. 피드 설정 
    ```yaml
