@@ -58,7 +58,7 @@ Flask 기반의 경량 웹 UI 위에서 LangChain을 활용한 RAG(Retrieval-Aug
 
 `feeds.yaml`에 원하는 RSS 주소를 등록하고 `scripts/fetch_feeds.py`를 실행하면 최신 기사들이 `data/feeds/` 폴더에 마크다운으로 누적됩니다. `DirectoryLoader`는 `data/` 아래 모든 `.md` 파일을 자동으로 읽으므로, 외부 뉴스/보도자료도 같은 RAG 파이프라인으로 검색됩니다.
 
-1. 피드 설정 편집
+1. 피드 설정 
    ```yaml
    feeds:
      - name: "Korea University News"
