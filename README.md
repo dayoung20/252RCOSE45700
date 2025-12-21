@@ -39,7 +39,7 @@ Flask 기반의 경량 웹 UI 위에서 LangChain을 활용한 RAG(Retrieval-Aug
      OPENAI_MODEL=gpt-4o-mini   # (선택) 기본값은 gpt-4o-mini
      EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-mpnet-base-v2
      ```
-   - OpenAI 대신 다른 LLM(HuggingFaceHub, Ollama 등)을 사용하고 싶다면 `app/rag_pipeline.py`의 `build_llm()` 부분을 수정하면 됩니다.
+   - OpenAI 대신 다른 LLM(HuggingFaceHub, Ollama 등)을 사용하고 싶다면 `app/rag_pipeline.py`의 `build_llm()` 부분을 수정
 
 3. **서버 실행**
    ```bash
